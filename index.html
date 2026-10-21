@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Browse school-approved IPS Oman textbooks and uniforms, organised by grade."
+    />
+    <meta name="theme-color" content="#102d3b" />
+    <title>IPS Oman | Books & Uniforms</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#" aria-label="IPS Oman home">
+        <span class="brand-mark">
+          <img src="assets/ips-school-crest.png" alt="" />
+        </span>
+        <span class="brand-copy">
+          <strong>IPS <span>OMAN</span></strong>
+          <small>BOOKS & UNIFORMS</small>
+        </span>
+      </a>
+
+      <nav class="main-nav" aria-label="Main navigation">
+        <a class="nav-link is-current" href="#catalogue">Catalogue</a>
+        <a class="nav-link" href="#how-it-works">How it works</a>
+        <button class="nav-link nav-button" type="button" data-open="school">
+          For schools
+        </button>
+      </nav>
+
+      <div class="header-actions">
+        <span class="demo-version"><span></span> DEMO · v1.0.0</span>
+        <button class="list-button" id="open-list" type="button" aria-label="Open my list">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01" /></svg>
+          <span>My list</span>
+          <span class="list-count" id="list-count">0</span>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="eyebrow-dot"></span> YOUR SCHOOL, ALL SET</div>
+          <h1 id="hero-title">A great year<br />starts <em>right here.</em></h1>
+          <p>
+            Find the books and uniforms your child needs, all in one
+            school-approved place.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-gold" href="#catalogue">
+              Explore the catalogue
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" /></svg>
+            </a>
+            <span class="hero-note">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 7 3v5c0 5-3.4 8.2-7 10-3.6-1.8-7-5-7-10V6l7-3Z" /><path d="m9 12 2 2 4-4" /></svg>
+              Every item checked by your school
+            </span>
+          </div>
+          <div class="hero-proof">
+            <span class="proof-avatars" aria-hidden="true"><i>F</i><i>A</i><i>M</i></span>
+            <span>One trusted list for every family</span>
+          </div>
+        </div>
+
+        <div class="hero-art" aria-label="Books and school uniform illustration">
+          <div class="art-sun"></div>
+          <div class="art-stamp"><span>IPS</span><small>READY<br />TO LEARN</small></div>
+          <div class="art-book art-book-back"><span>ENGLISH</span><i></i></div>
+          <div class="art-book art-book-front"><span>CURIOUS<br />MINDS</span><i></i><small>YEAR 4 · SCIENCE</small></div>
+          <div class="art-notebook"><i></i><i></i><i></i><i></i><i></i><span>learn<br />every day</span></div>
+          <div class="art-pencil"></div>
+          <div class="art-shadow"></div>
+          <span class="art-sparkle sparkle-one">✳</span>
+          <span class="art-sparkle sparkle-two">✦</span>
+          <span class="art-caption">A little more prepared.<br /><strong>A lot more confident.</strong></span>
+        </div>
+        <div class="hero-bottom">
+          <span>MADE FOR IPS OMAN FAMILIES</span>
+          <span class="hero-bottom-line"></span>
+          <span>MUSCAT, SULTANATE OF OMAN <b>✳</b></span>
+        </div>
+      </section>
+
+      <section class="trust-strip" aria-label="Catalogue benefits">
+        <div class="trust-item">
+          <span class="trust-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 7 3v5c0 5-3.4 8.2-7 10-3.6-1.8-7-5-7-10V6l7-3Z" /><path d="m9 12 2 2 4-4" /></svg></span>
+          <span><strong>School approved</strong><small>Only verified essentials</small></span>
+        </div>
+        <div class="trust-item">
+          <span class="trust-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v14H4zM8 3v4m8-4v4M4 9h16" /><path d="m8 14 2 2 5-5" /></svg></span>
+          <span><strong>Sorted by grade</strong><small>Find the right year, fast</small></span>
+        </div>
+        <div class="trust-item">
+          <span class="trust-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h11v11H3zM14 11h4l3 3v4h-7z" /><circle cx="7.5" cy="19" r="1.5" /><circle cx="17.5" cy="19" r="1.5" /></svg></span>
+          <span><strong>Buy from the seller</strong><small>Direct links, no in-app checkout</small></span>
+        </div>
+        <div class="trust-item trust-location">
+          <span class="oman-mark">OM</span>
+          <span><strong>Proudly local</strong><small>For families across Oman</small></span>
+        </div>
+      </section>
+
+      <section class="catalogue-section" id="catalogue" aria-labelledby="catalogue-title">
+        <div class="section-heading">
+          <div>
+            <div class="section-kicker">THE OFFICIAL IPS LIST</div>
+            <h2 id="catalogue-title">The right things, <em>made simple.</em></h2>
+            <p>Choose your child's grade to see everything they need this year.</p>
+          </div>
+          <label class="grade-select-wrap">
+            <span>ACADEMIC YEAR 2026–27</span>
+            <span class="select-shell">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v14H4zM8 3v4m8-4v4M4 9h16" /></svg>
+              <select id="grade-select" aria-label="Select grade">
+                <option value="All grades">All grades</option>
+                <option value="KG 2">KG 2</option>
+                <option value="Year 1">Year 1</option>
+                <option value="Year 2">Year 2</option>
+                <option value="Year 3">Year 3</option>
+                <option value="Year 4" selected>Year 4</option>
+                <option value="Year 5">Year 5</option>
+              </select>
+              <svg class="select-chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5" /></svg>
+            </span>
+          </label>
+        </div>
+
+        <div class="catalogue-toolbar">
+          <div class="category-tabs" role="group" aria-label="Filter catalogue by category">
+            <button class="category-tab is-active" type="button" data-category="All">
+              All essentials <span id="all-tab-count">0</span>
+            </button>
+            <button class="category-tab" type="button" data-category="Books">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v16H6.5A2.5 2.5 0 0 1 4 16.5zM4 16.5A2.5 2.5 0 0 1 6.5 14H20M8 7h8" /></svg>
+              Books <span id="books-tab-count">0</span>
+            </button>
+            <button class="category-tab" type="button" data-category="Uniforms">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 4 4 2 4-2 5 4-3 4-2-1v9H8v-9l-2 1-3-4zM9 4a3 3 0 0 0 6 0" /></svg>
+              Uniforms <span id="uniforms-tab-count">0</span>
+            </button>
+          </div>
+          <label class="search-box">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8" /><path d="m16 16 5 5" /></svg>
+            <input id="search-input" type="search" placeholder="Search books, subjects..." />
+            <kbd>/</kbd>
+          </label>
+        </div>
+
+        <div class="results-row">
+          <p id="results-summary" aria-live="polite">Showing essentials for <strong>Year 4</strong></p>
+          <span class="verified-label"><span>✓</span> SCHOOL-VERIFIED SELLERS</span>
+        </div>
+        <div class="product-grid" id="product-grid"></div>
+        <div class="empty-state" id="empty-state" hidden>
+          <span>⌕</span>
+          <h3>No matching essentials</h3>
+          <p>Try another search or choose a different grade.</p>
+          <button class="button button-outline" id="clear-filters" type="button">Clear filters</button>
+        </div>
+        <div class="catalogue-note">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path d="M12 11v5m0-8h.01" /></svg>
+          <p><strong>A note for parents</strong> — This is an approved catalogue, not a checkout. Purchases and payments happen directly with each verified seller.</p>
+        </div>
+      </section>
+
+      <section class="how-section" id="how-it-works">
+        <div class="how-intro">
+          <div class="section-kicker">THREE EASY STEPS</div>
+          <h2>School list to<br /><em>school ready.</em></h2>
+          <p>Everything you need to get organised before the first bell.</p>
+          <button class="text-link" type="button" data-open="school">How schools manage the list <span>→</span></button>
+        </div>
+        <div class="step-card">
+          <span class="step-number">01</span>
+          <span class="step-icon step-book"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v16H6.5A2.5 2.5 0 0 1 4 16.5zM4 16.5A2.5 2.5 0 0 1 6.5 14H20M8 7h8" /></svg></span>
+          <h3>Pick a grade</h3>
+          <p>See a clear list of required books and uniform items for your child's year.</p>
+        </div>
+        <div class="step-card">
+          <span class="step-number">02</span>
+          <span class="step-icon step-check"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 7 3v5c0 5-3.4 8.2-7 10-3.6-1.8-7-5-7-10V6l7-3Z" /><path d="m9 12 2 2 4-4" /></svg></span>
+          <h3>Save your list</h3>
+          <p>Keep track of the items your family still needs, all in one handy place.</p>
+        </div>
+        <div class="step-card">
+          <span class="step-number">03</span>
+          <span class="step-icon step-shop"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10h18l-1 11H4L3 10ZM2 10l2-7h16l2 7M9 21v-7h6v7" /><path d="M2 10a3 3 0 0 0 6 0 3 3 0 0 0 6 0 3 3 0 0 0 6 0" /></svg></span>
+          <h3>Shop with confidence</h3>
+          <p>Contact the verified seller to confirm availability and arrange your purchase.</p>
+        </div>
+      </section>
+
+      <section class="school-banner">
+        <div class="banner-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 10 9-7 9 7v10H3z" /><path d="M9 20v-7h6v7M7 10h.01M12 10h.01M17 10h.01" /></svg></div>
+        <div>
+          <span>FOR IPS OMAN</span>
+          <h2>A simpler school-shop experience starts with a verified list.</h2>
+          <p>School admins review every product and seller link before it is shared with families.</p>
+        </div>
+        <button class="button button-light" type="button" data-open="school">Explore the school portal <span>→</span></button>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <a class="footer-brand" href="#">
+        <span class="footer-mark"><img src="assets/ips-school-crest.png" alt="" /></span>
+        <span><strong>IPS OMAN</strong><small>Books & Uniforms</small></span>
+      </a>
+      <p>A trusted school list. A confident start.</p>
+      <div class="footer-meta"><span>DEMO VERSION 1.0.0</span><span>© 2026 IPS Oman · Muscat, Oman</span></div>
+    </footer>
+
+    <dialog class="app-dialog" id="app-dialog" aria-labelledby="dialog-title">
+      <button class="dialog-close" type="button" aria-label="Close dialog">×</button>
+      <div class="dialog-content" id="dialog-content"></div>
+    </dialog>
+  </body>
+</html>
