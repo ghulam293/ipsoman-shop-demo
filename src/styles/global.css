@@ -1965,3 +1965,386 @@ tbody tr:hover {
 .app-navbar-links button.is-active::after { content: ''; position: absolute; height: 3px; background: #285642; bottom: -1px; left: 10px; right: 10px; border-radius: 3px 3px 0 0; }
 @media (max-width: 1200px) { .app-navbar { padding: 0 22px; } .app-navbar-links { gap: 1px; } .app-navbar-links button { padding: 15px 9px; gap: 5px; } }
 @media (max-width: 760px) { .app-navbar { padding: 8px 12px; } .app-navbar-links { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 5px; } .app-navbar-links button { flex-direction: column; gap: 5px; font-size: 10px; padding: 10px 3px; border-radius: 6px; } .app-navbar-links button.is-active::after { bottom: 0; left: 25%; right: 25%; height: 2px; } }
+
+
+/* ==========================================================================
+   UNIFORM SIZING, GENDER SELECTION & PROFESSIONAL ROLES (STRICT SECURITY)
+   ========================================================================== */
+
+/* Management & Action Buttons */
+.management-buttons { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.colorful-uniform-btn {
+  background: linear-gradient(135deg, #7e1b2f 0%, #a8233f 100%) !important;
+  color: #fff !important;
+  font-weight: 600 !important;
+  border: 0 !important;
+  box-shadow: 0 4px 14px rgba(126, 27, 47, 0.3) !important;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+.colorful-uniform-btn:hover {
+  transform: translateY(-1px) !important;
+  box-shadow: 0 6px 20px rgba(126, 27, 47, 0.4) !important;
+  filter: brightness(1.08) !important;
+}
+
+/* Product Tag Badges */
+.product-tag-row { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; margin-bottom: 6px; }
+.gender-badge {
+  font-size: 10px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.gender-badge.boys { background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; }
+.gender-badge.girls { background: #fdf2f8; color: #be185d; border: 1px solid #fbcfe8; }
+.gender-badge.unisex { background: #ecfdf5; color: #047857; border: 1px solid #a7f3d0; }
+.size-badge {
+  font-size: 10px;
+  font-weight: 500;
+  padding: 3px 7px;
+  border-radius: 4px;
+  background: #f1f5f9;
+  color: #334155;
+  border: 1px solid #e2e8f0;
+}
+
+/* Modal Backdrop & Uniform Modal */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.7);
+  backdrop-filter: blur(5px);
+  z-index: 999;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  overflow-y: auto;
+  animation: modalFadeIn 0.2s ease-out;
+}
+@keyframes modalFadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+.uniform-modal {
+  background: #fff;
+  border-radius: 14px;
+  width: 100%;
+  max-width: 860px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.25);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+  animation: modalPop 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+@keyframes modalPop { from { transform: scale(0.96); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+.modal-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  z-index: 10;
+  background: #f1f5f9;
+  border-radius: 50%;
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  color: #64748b;
+  border: 0;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.modal-close:hover { background: #e2e8f0; color: #0f172a; }
+
+.modal-header {
+  padding: 24px 28px 16px;
+  border-bottom: 1px solid #f1f5f9;
+  background: linear-gradient(to bottom, #fafbf8, #ffffff);
+}
+.modal-badge-row { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+.school-pill {
+  font-size: 11px;
+  font-weight: 700;
+  color: #7e1b2f;
+  background: #fdf2f4;
+  border: 1px solid #f9d3da;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.security-pill {
+  font-size: 11px;
+  font-weight: 600;
+  color: #047857;
+  background: #ecfdf5;
+  border: 1px solid #a7f3d0;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.modal-header h2 { font-size: 22px; color: #0f172a; margin: 4px 0 6px; font-family: Manrope, sans-serif; }
+.modal-header p { font-size: 12px; color: #64748b; margin: 0; }
+
+/* Gender Selection Tabs */
+.gender-selector-container { padding: 18px 28px 12px; background: #f8fafc; border-bottom: 1px solid #f1f5f9; }
+.section-label { font-size: 11px; font-weight: 700; color: #475569; text-transform: uppercase; letter-spacing: 0.5px; display: block; margin-bottom: 10px; }
+.gender-toggle-tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.gender-tab {
+  background: #fff;
+  border: 2px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.gender-tab .gender-emoji { font-size: 26px; }
+.gender-tab strong { display: block; font-size: 14px; color: #1e293b; margin-bottom: 2px; }
+.gender-tab small { font-size: 11px; color: #64748b; display: block; }
+.gender-tab.boys-tab:hover { border-color: #93c5fd; }
+.gender-tab.boys-tab.active {
+  border-color: #2563eb;
+  background: #eff6ff;
+  box-shadow: 0 4px 16px rgba(37, 99, 235, 0.15);
+}
+.gender-tab.boys-tab.active strong { color: #1e40af; }
+.gender-tab.girls-tab:hover { border-color: #f472b6; }
+.gender-tab.girls-tab.active {
+  border-color: #be185d;
+  background: #fdf2f8;
+  box-shadow: 0 4px 16px rgba(190, 24, 93, 0.15);
+}
+.gender-tab.girls-tab.active strong { color: #9d174d; }
+
+/* Modal Body Layout */
+.uniform-selection-body { display: grid; grid-template-columns: 260px 1fr; gap: 24px; padding: 22px 28px 28px; }
+.photo-preview-box {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.preview-uniform-img { width: 100%; height: 310px; object-fit: cover; object-position: top center; display: block; }
+.preview-caption { padding: 12px; background: #fff; border-top: 1px solid #f1f5f9; }
+.preview-caption strong { display: block; font-size: 11px; color: #1e293b; }
+.preview-caption small { font-size: 10px; color: #64748b; }
+
+.item-selection-pane { display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+.uniform-items-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.uniform-item-card {
+  border: 1.5px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 11px 12px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  cursor: pointer;
+  background: #fff;
+  transition: all 0.15s ease;
+}
+.uniform-item-card:hover { border-color: #cbd5e1; background: #f8fafc; }
+.uniform-item-card.selected { border-color: #7e1b2f; background: #fdf2f4; box-shadow: 0 2px 8px rgba(126, 27, 47, 0.12); }
+.item-radio-mark {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid #cbd5e1;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.uniform-item-card.selected .item-radio-mark { border-color: #7e1b2f; }
+.item-radio-mark span { width: 8px; height: 8px; border-radius: 50%; background: #7e1b2f; }
+.item-details { flex: 1; min-width: 0; }
+.item-details strong { display: block; font-size: 12px; color: #0f172a; line-height: 1.3; }
+.item-details p { font-size: 10px; color: #64748b; margin: 3px 0 5px; line-height: 1.3; }
+.item-price { font-size: 12px; font-weight: 700; color: #7e1b2f; }
+
+/* Size Dropdown */
+.size-dropdown-label { display: flex; flex-direction: column; gap: 6px; }
+.size-select-input {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #0f172a;
+  background: #fff;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.15s;
+}
+.size-select-input:focus { border-color: #7e1b2f; }
+
+/* Student Details & Qty */
+.student-details-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 12px; }
+.student-details-grid label { display: flex; flex-direction: column; gap: 6px; font-size: 11px; color: #475569; font-weight: 500; }
+.student-details-grid input, .student-details-grid select {
+  padding: 9px 12px;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 12px;
+  color: #0f172a;
+  background: #fff;
+}
+.qty-controls { display: flex; align-items: center; border: 1.5px solid #cbd5e1; border-radius: 6px; height: 38px; background: #fff; }
+.qty-btn { flex: 1; height: 100%; border: 0; background: transparent; font-size: 15px; font-weight: 700; color: #475569; cursor: pointer; }
+.qty-btn:hover { background: #f1f5f9; }
+.qty-val { width: 30px; text-align: center; font-size: 13px; font-weight: 700; color: #0f172a; }
+
+/* Cost Bar & Submit */
+.order-cost-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  background: #f8fafc;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+  margin-top: 4px;
+}
+.order-cost-bar span { font-size: 11px; color: #64748b; display: block; }
+.order-cost-bar strong { font-size: 20px; color: #7e1b2f; font-family: Manrope, sans-serif; font-weight: 800; }
+.order-submit-btn { padding: 11px 22px !important; font-size: 13px !important; font-weight: 600 !important; }
+
+/* Success Card */
+.order-success-card { padding: 48px 28px; text-align: center; }
+.success-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: #ecfdf5;
+  color: #059669;
+  display: grid;
+  place-items: center;
+  margin: 0 auto 16px;
+  border: 2px solid #a7f3d0;
+}
+.order-success-card h3 { font-size: 20px; color: #0f172a; margin-bottom: 6px; }
+.order-summary-box {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 18px;
+  max-width: 440px;
+  margin: 20px auto;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 12px;
+}
+.order-summary-box div { display: flex; justify-content: space-between; }
+.order-summary-box span { color: #64748b; }
+.order-summary-box strong { color: #0f172a; }
+.success-note { font-size: 12px; color: #64748b; margin-bottom: 22px; }
+
+/* Role Selector Menu */
+.role-dropdown-container { position: relative; }
+.role-badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 12px;
+  border-radius: 9999px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1.5px solid transparent;
+  transition: all 0.15s ease;
+  background: #fff;
+}
+.role-badge-pill.admin { background: #fef3c7; color: #b45309; border-color: #fde68a; }
+.role-badge-pill.manager { background: #d1fae5; color: #047857; border-color: #a7f3d0; }
+.role-badge-pill.staff { background: #dbeafe; color: #1d4ed8; border-color: #bfdbfe; }
+.role-badge-pill.parent { background: #ffe4e6; color: #be123c; border-color: #fecdd3; }
+
+.role-menu-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  width: 290px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.15);
+  border: 1px solid #e2e8f0;
+  padding: 8px;
+  z-index: 100;
+  animation: modalPop 0.15s ease-out;
+}
+.role-menu-header { padding: 8px 10px; border-bottom: 1px solid #f1f5f9; margin-bottom: 6px; }
+.role-menu-header strong { font-size: 12px; color: #0f172a; display: block; }
+.role-menu-header small { font-size: 10px; color: #64748b; }
+.role-menu-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.15s;
+}
+.role-menu-item:hover { background: #f8fafc; }
+.role-menu-item.active { background: #f1f5f9; }
+.role-icon-box {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  font-size: 11px;
+  color: #fff;
+  flex-shrink: 0;
+}
+.role-menu-item strong { display: block; font-size: 12px; color: #0f172a; }
+.role-menu-item small { font-size: 10px; color: #64748b; display: block; }
+
+/* Security Badge in Header / Form */
+.security-badge {
+  font-size: 10px;
+  font-weight: 600;
+  color: #047857;
+  background: #ecfdf5;
+  border: 1px solid #a7f3d0;
+  padding: 4px 8px;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.product-form-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+/* Responsive adjustments for uniform modal */
+@media (max-width: 760px) {
+  .uniform-selection-body { grid-template-columns: 1fr; }
+  .photo-preview-box { height: 180px; }
+  .preview-uniform-img { height: 120px; }
+  .student-details-grid { grid-template-columns: 1fr; }
+  .uniform-items-grid { grid-template-columns: 1fr; }
+}

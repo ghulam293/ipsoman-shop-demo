@@ -12,6 +12,8 @@ import {
   ArrowRight,
   RefreshCw,
   CircleHelp,
+  ShieldCheck,
+  Sparkles,
 } from "../components/Icons.jsx";
 import Sidebar from "../components/Sidebar.jsx";
 import Navbar from "../components/Navbar.jsx";
@@ -19,6 +21,50 @@ import Overview from "../features/dashboard/Overview.jsx";
 import Orders from "../features/orders/Orders.jsx";
 import Products from "../features/products/Products.jsx";
 import { getDashboard, money } from "../lib/api.js";
+
+const ROLES = [
+  {
+    id: "admin",
+    name: "School Admin",
+    title: "Administrator",
+    initials: "SA",
+    color: "#d97706",
+    badgeClass: "admin",
+    badgeEmoji: "🛡️",
+    description: "Full administrative access: financials, settings, catalog & security",
+  },
+  {
+    id: "manager",
+    name: "Shop Manager",
+    title: "Store Supervisor",
+    initials: "SM",
+    color: "#059669",
+    badgeClass: "manager",
+    badgeEmoji: "👔",
+    description: "Inventory operations, uniform sizing stock, orders fulfillment",
+  },
+  {
+    id: "staff",
+    name: "Staff / Cashier",
+    title: "Shop Assistant",
+    initials: "SC",
+    color: "#2563eb",
+    badgeClass: "staff",
+    badgeEmoji: "💼",
+    description: "Point of sale, student uniform lookup, quick order processing",
+  },
+  {
+    id: "parent",
+    name: "Parent / Student",
+    title: "Family Portal",
+    initials: "PS",
+    color: "#be123c",
+    badgeClass: "parent",
+    badgeEmoji: "🎒",
+    description: "Browse required books, select Boys & Girls uniform sizes",
+  },
+];
+
 export default function App() {
   const [page, setPage] = useState("Overview"),
     [period, setPeriod] = useState("month"),
@@ -29,6 +75,8 @@ export default function App() {
     [menu, setMenu] = useState(false),
     [notifications, setNotifications] = useState(false),
     [order, setOrder] = useState(null),
+    [role, setRole] = useState(ROLES[0]),
+    [roleMenuOpen, setRoleMenuOpen] = useState(false),
     [notice, setNotice] = useState("");
   const [shopName, setShopName] = useState(
     () => localStorage.getItem("ips-shop-name") || "IPS School Shop",
@@ -53,6 +101,7 @@ export default function App() {
       if (e.key === "Escape") {
         setOrder(null);
         setNotifications(false);
+        setRoleMenuOpen(false);
         setMenu(false);
       }
     };
@@ -63,6 +112,7 @@ export default function App() {
     setPage(next);
     setSearch("");
     setMenu(false);
+    setRoleMenuOpen(false);
     setNotifications(false);
   }
   const titles = {
@@ -117,6 +167,12 @@ export default function App() {
             <span>Workspace</span>
             <span>/</span>
             <strong>{page}</strong>
+            <span className={`role-badge-pill ${role.badgeClass}`} style={{ marginLeft: "10px" }}>
+              {role.badgeEmoji} {role.name}
+            </span>
+            <span className="security-badge" title="High strict security policy active: CSP, HSTS, Sanitization">
+              <ShieldCheck size={13} /> Strict Security Active
+            </span>
           </div>
           <div className="header-right">
             <label className="search">
@@ -166,18 +222,61 @@ export default function App() {
                 </div>
               )}
             </div>
-            <button
-              className="profile"
-              onClick={() => navigate("Settings")}
-              aria-label="Account settings"
-            >
-              <span className="avatar admin-avatar">SA</span>
-              <span>
-                <strong>School Admin</strong>
-                <small>Administrator</small>
-              </span>
-              <ChevronDown size={14} />
-            </button>
+
+            <div className="role-dropdown-container">
+              <button
+                className="profile"
+                onClick={() => setRoleMenuOpen(!roleMenuOpen)}
+                aria-label="Switch professional role"
+                aria-expanded={roleMenuOpen}
+              >
+                <span
+                  className="avatar"
+                  style={{ backgroundColor: role.color, color: "#fff", fontWeight: 700 }}
+                >
+                  {role.initials}
+                </span>
+                <span>
+                  <strong>{role.name}</strong>
+                  <small>{role.title}</small>
+                </span>
+                <ChevronDown size={14} />
+              </button>
+
+              {roleMenuOpen && (
+                <div className="role-menu-dropdown">
+                  <div className="role-menu-header">
+                    <strong>Switch Professional Role</strong>
+                    <small>Select active workplace permission</small>
+                  </div>
+                  {ROLES.map((r) => (
+                    <button
+                      key={r.id}
+                      className={`role-menu-item ${role.id === r.id ? "active" : ""}`}
+                      onClick={() => {
+                        setRole(r);
+                        setRoleMenuOpen(false);
+                        setNotice(`Switched to ${r.name} role`);
+                      }}
+                    >
+                      <div
+                        className="role-icon-box"
+                        style={{ backgroundColor: r.color }}
+                      >
+                        {r.initials}
+                      </div>
+                      <div>
+                        <strong>{r.badgeEmoji} {r.name}</strong>
+                        <small>{r.description}</small>
+                      </div>
+                      {role.id === r.id && (
+                        <Check size={16} style={{ color: r.color, marginLeft: "auto" }} />
+                      )}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
           </div>
         </header>
         <Navbar page={page} onNavigate={navigate} />
@@ -303,11 +402,25 @@ export default function App() {
                 />
               )}
               {page === "Products" && (
-                <Products products={data.products} search={search} onCreated={(product) => {
-                  setData((current) => ({ ...current, products: [...current.products, product] }));
-                  setSearch("");
-                  setNotice("Product added successfully");
-                }} />
+                <Products
+                  products={data.products}
+                  search={search}
+                  onCreated={(product) => {
+                    setData((current) => ({
+                      ...current,
+                      products: [...current.products, product],
+                    }));
+                    setSearch("");
+                    setNotice("Product added successfully");
+                  }}
+                  onOrderPlaced={(newOrder) => {
+                    setData((current) => ({
+                      ...current,
+                      orders: [newOrder, ...current.orders],
+                    }));
+                    setNotice(`Uniform order placed for ${newOrder.customer}!`);
+                  }}
+                />
               )}
               {page === "Customers" && (
                 <section className="card customers-card">

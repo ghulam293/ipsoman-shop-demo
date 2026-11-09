@@ -29,6 +29,8 @@ const paths = {
   Wallet: "M3 5h17v15H3V5m0 0V3h15v2m3 5h-7v5h7v-5m-4 2.5h.01",
   Shirt: "m8 3-6 4 3 5 3-2v11h8V10l3 2 3-5-6-4a4 4 0 0 1-8 0",
   MoreHorizontal: "M5 12h.01M12 12h.01M19 12h.01",
+  ShieldCheck: "M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10zm-3-10 2 2 4-4",
+  Sparkles: "m12 3 1.9 4.6L18 9.5l-4.1 1.9L12 16l-1.9-4.6L6 9.5l4.1-1.9zM5 3l.8 1.8L7.5 5.5 5.8 6.3 5 8l-.8-1.7L2.5 5.5l1.7-.7z",
 };
 const icon = (name) =>
   function Icon({ size = 20, ...props }) {
@@ -71,4 +73,6 @@ export const Search = icon("Search"),
   BookOpen = icon("BookOpen"),
   Wallet = icon("Wallet"),
   Shirt = icon("Shirt"),
-  MoreHorizontal = icon("MoreHorizontal");
+  MoreHorizontal = icon("MoreHorizontal"),
+  ShieldCheck = icon("ShieldCheck"),
+  Sparkles = icon("Sparkles");

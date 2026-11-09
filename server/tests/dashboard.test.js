@@ -25,7 +25,7 @@ test("dashboard returns demo products and orders", async () => {
   assert.equal(response.status, 200);
   const data = await response.json();
   assert.equal(data.demo, true);
-  assert.equal(data.products.length, 6);
+  assert.equal(data.products.length, 9);
   assert.equal(data.orders.length, 6);
   assert.equal(data.summary.revenue, 4826.75);
 });
